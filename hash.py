@@ -7,18 +7,13 @@ def encryption_block(data):
 def hash_function(message):
     H_prev = 0x67452301  
     result = ""
-
+    
     for char in message:
         M = ord(char)
-
         H = encryption_block(H_prev ^ M) + M
-
         H = H & 0xFFFFFFFF
-
         H_prev = H
-
         result += f"{H:08x}"
-
     return result
 
 def generate_hash():
