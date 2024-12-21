@@ -10,7 +10,7 @@ def hash_function(message):
     
     for char in message:
         M = ord(char)
-        H = encryption_block(H_prev ^ M) + M
+        H = encryption_block((H_prev + M) & 0xFFFFFFFF) + M
         H = H & 0xFFFFFFFF
         H_prev = H
         result += f"{H:08x}"
